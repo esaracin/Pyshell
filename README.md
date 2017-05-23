@@ -51,6 +51,7 @@ Pyshell expects Python 3, and currently, for ease of testing and use, includes a
 of Python 3, so as to be runnable from the command line by simply prepending its name with the usual './'. 
 
 Going forward, the following features need to be implemented in order to cover the basics of a true shell environment:
+
 	Simultaneous input/output redirection (within a single command)
 	Support or an arbitrary number of pipes
 	Support for graceful exit with EOF
