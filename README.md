@@ -15,7 +15,7 @@ in forking and loading program images into the new memory space.
 In an effort to implement a realistic shell, I utilize the readline library functions, namely the titular readline() method,
 which allow for autocompletion that feels very accurate to any given shell experience.
 
-Our shell supports many of the control characters that a given supported Bash shell might, albeit with some limitations:
+The shell supports many of the control characters that a given supported Bash shell might, albeit with some limitations:
 
         ';':    The semi-colon used to separate a sequence of commands has been implemented, and Pyshell can accept an arbitrarily
 		long sequence in this manner. Any other controls characters are entirely viable for use in conjuction
@@ -33,10 +33,10 @@ Our shell supports many of the control characters that a given supported Bash sh
         '2>':   A 2 followed by a greater-than sign redirects the standard error of a given command to a given file whose name is
                 entered following the sequence and a space character (i.e. cmd 2> output.txt)
 
-        *'&>':   A '&' sign followed by a greater-than sign redirects the both the standard output and the standard error of a cmd
+        *'&>':  A '&' sign followed by a greater-than sign redirects the both the standard output and the standard error of a cmd
                 to the specified file whose name is entered following the sequence and a space character (i.e. cmd &> output.txt)
 
-        *'|':    The vertical bar indicates that a given command should pipe its output as input to the next command in a sequence.
+        *'|':   The vertical bar indicates that a given command should pipe its output as input to the next command in a sequence.
                 This MUST be follwoed by at least one other command (i.e. cmd1 | cmd2 | cmd3)
 
                 *NOTE*: While myshell has been implemented to support an arbitrary number of '|' characters (and, as such, an
