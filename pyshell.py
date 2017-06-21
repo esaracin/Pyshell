@@ -6,7 +6,7 @@ import signal
 from io import StringIO
 import readline
 
-def parseCmd(cmd):
+def parse_cmd(cmd):
     '''Parses the input command into its composite components. 
     If there exists a sequence of commands, we first separate those 
     commands into separate lists within a larger 2D list. In either case,
@@ -56,7 +56,7 @@ def run_pipes(cmd):
         first = cmd[i]
         second = cmd[i + 1]
 
-def runCmd(cmd):
+def run_cmd(cmd):
     '''Given a cmd specified as a reference to a list containing
     a command and its composite arguments, Runs the given command. 
     Redirects standard in/output as necessary.'''
@@ -145,12 +145,12 @@ def main():
         if cmd == '':
             sys.exit(0)
         else:
-            cmdList = parseCmd(cmd)
+            cmdList = parse_cmd(cmd)
         
             # Run the command and capture return signal
             for cmd in range(len(cmdList)):
                 try:
-                    runCmd(cmdList[cmd])
+                    run_cmd(cmdList[cmd])
                 except Exception as x:
                     print('\'' + str(cmdList[cmd]) + '\'', 'returned exception:', x)
 
