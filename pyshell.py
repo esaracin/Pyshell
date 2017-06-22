@@ -38,7 +38,7 @@ def sigint_handler(signal, frame):
 
 def count_controls(cmd):
     
-    chars = ['>', '<', '1>', '2>', ]
+    chars = ['>', '<', '1>', '2>']
     
     count = 0
     for i in cmd:
