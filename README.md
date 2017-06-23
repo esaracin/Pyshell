@@ -53,6 +53,6 @@ of Python 3, so as to be runnable from the command line by simply prepending its
 Going forward, the following features need to be implemented in order to cover the basics of a true shell environment:
 
 	Simultaneous input/output redirection (within a single command)
-	Support or an arbitrary number of pipes
+	Support or an arbitrary number of pipes, as well as non-trvial single-pipe commands (i.e. flag uses such as 'ls -a | cat')
 	Support for graceful exit with EOF
 	Support for directory movement through cd

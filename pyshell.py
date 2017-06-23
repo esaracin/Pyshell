@@ -56,6 +56,19 @@ def run_pipes(cmd):
         first = cmd[i]
         second = cmd[i + 1]
 
+        # To avoid using shell=True in our Popen call, we create
+        # each subprocess separately, and manually pipe them, capturing the
+        # output to be printed.
+
+        to_pipe = subprocess.Popen(first, stdout=subprocess.PIPE)
+        output = subprocess.check_output(second, stdin=to_pipe.stdout)
+        to_pipe.wait()
+
+    # Convert the return bytecode into ascii character output
+    print(output.decode('ascii').strip())
+
+    return
+
 def run_cmd(cmd):
     '''Given a cmd specified as a reference to a list containing
     a command and its composite arguments, Runs the given command. 
@@ -67,8 +80,8 @@ def run_cmd(cmd):
     # Add support for compound commands:
     # ['cat', '>', 'out.txt', '<', 'test.txt'] 
 
-    # Add support for piped commands:
-    # ['ls', '|', 'echo']
+    # Add support for piped commands with flags:
+    # ['ls -a', '|', 'cat']
 
     # Add support for changing directories
     
@@ -80,12 +93,13 @@ def run_cmd(cmd):
     if('|' in cmd):
         # Recombine our command, so that we can properly split it on any 
         # pipes that may exist. If there are pipes, we call a 
-        # separate function to handle them.
+        # separate function to handle them. 
         
         cmd = ' '.join(cmd).split('|')
-        print(cmd)
-        sys.exit(0)
+        cmd = [word.strip() for word in cmd]
+        
         run_pipes(cmd)
+
         return
     
     control_chars = []
