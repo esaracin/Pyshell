@@ -52,22 +52,26 @@ def run_pipes(cmd):
     pipes, and runs that command, piping output as necessary.'''
 
     num_commands = len(cmd)
-    for i in range(num_commands - 1):
-        first = cmd[i]
-        second = cmd[i + 1]
+    
+    # Our first 'from_process' is the first cmd on our list.
+    from_process = subprocess.Popen(cmd[0], stdout=subprocess.PIPE)
+    for i in range(1, num_commands):
 
-        # To avoid using shell=True in our Popen call, we create
-        # each subprocess separately, and manually pipe them, capturing the
-        # output to be printed.
+        # Our first 'to_process' is the next cmd on our list. Have it read from
+        # our 'from_process' and write to the pipe.
+        to_process = subprocess.Popen(cmd[i], stdin=from_process.stdout,
+                                     stdout=subprocess.PIPE)
+        
+        # Close the standard out of from_process (we aren't using it!) and
+        # make our 'to_process' the new 'from_process' for the next loop.
+        from_process.stdout.close()
+        from_process = to_process
 
-        to_pipe = subprocess.Popen(first, stdout=subprocess.PIPE)
-        output = subprocess.check_output(second, stdin=to_pipe.stdout)
-        to_pipe.wait()
-
-    # Convert the return bytecode into ascii character output
+    output = to_process.communicate()[0]
     print(output.decode('ascii').strip())
 
     return
+
 
 def run_cmd(cmd):
     '''Given a cmd specified as a reference to a list containing

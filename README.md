@@ -36,12 +36,10 @@ The shell supports many of the control characters that a given supported Bash sh
         *'&>':  A '&' sign followed by a greater-than sign redirects the both the standard output and the standard error of a cmd
                 to the specified file whose name is entered following the sequence and a space character (i.e. cmd &> output.txt)
 
-        *'|':   The vertical bar indicates that a given command should pipe its output as input to the next command in a sequence.
-                This MUST be follwoed by at least one other command (i.e. cmd1 | cmd2 | cmd3)
+        '|':    The vertical bar indicates that a given command should pipe its output as input to the next command in a sequence.
+                This MUST be follwoed by at least one other command (i.e. cmd1 | cmd2 | cmd3), and can handle an arbitrary number 
+		of consecutive pipes.
 
-                *NOTE*: While myshell has been implemented to support an arbitrary number of '|' characters (and, as such, an
-                arbitrary number of pipes), it is recommended to generally not use more than 2-3 for a given overall command, for 
-		the sake of clarity.
 
 	*: Denotes that the specified control character has yet to be fully implemented into the current version of Pyshell.
 
@@ -53,6 +51,6 @@ of Python 3, so as to be runnable from the command line by simply prepending its
 Going forward, the following features need to be implemented in order to cover the basics of a true shell environment:
 
 	Simultaneous input/output redirection (within a single command)
-	Support or an arbitrary number of pipes, as well as non-trvial single-pipe commands (i.e. flag uses such as 'ls -a | cat')
+	Support for non-trvial pipe commands (i.e. flag uses such as 'ls -a | cat') as well as compound commands that include similar flags.
 	Support for graceful exit with EOF
 	Support for directory movement through cd
