@@ -38,7 +38,7 @@ The shell supports many of the control characters that a given supported Bash sh
 
         '|':    The vertical bar indicates that a given command should pipe its output as input to the next command in a sequence.
                 This MUST be follwoed by at least one other command (i.e. cmd1 | cmd2 | cmd3), and can handle an arbitrary number 
-		of consecutive pipes.
+		of consecutive pipes
 
 
 	*: Denotes that the specified control character has yet to be fully implemented into the current version of Pyshell.
