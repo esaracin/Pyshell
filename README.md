@@ -10,10 +10,10 @@ Pyshell:
 Pyshell uses a series of helper functions and packages to simulate a Linux-based shell environment, wherein a user can enter commands
 with specific control characters that redirect input/output as necessary. Generally, these commands take the form of
 executable program files and are run through the pyshell process using Python's subprocess library, which handles much of the work
-in forking and loading program images into the new memory space
+in forking and loading program images into the new memory space.
 
 In an effort to implement a realistic shell, I utilize the readline library functions, namely the titular readline() method,
-which allow for autocompletion that feels very accurate to any given shell experience
+which allow for autocompletion that feels very accurate to any given shell experience.
 
 The shell supports many of the control characters that a given supported Bash shell might, albeit with some limitations:
 
@@ -41,7 +41,7 @@ The shell supports many of the control characters that a given supported Bash sh
 		of consecutive pipes.
 
 
-	*: Denotes that the specified control character has yet to be fully implemented into the current version of Pyshell
+	*: Denotes that the specified control character has yet to be fully implemented into the current version of Pyshell.
 
 	** Changing directories through the use of the 'cd' command is, similarly, yet to be implemented.
 
